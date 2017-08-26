@@ -1,0 +1,28 @@
+<div class="todo_list">
+  <div class="item_wrapper" ng-repeat="key in item_keys()">
+    <div class="todo_item" ng-class="{'past_due': past_due(key)}">
+      <i class="item_completed" ng-click="swapCompleted(key)"
+        ng-class="getItem(key).completed ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'">
+      </i>
+      <h4 class="item_title">{{getItem(key).title}}</h4>
+      <br>
+      <h6 class="item_due_date">{{getItem(key).due_date}}</h6>
+      </span>
+      <span class="item_details_toggle" ng-click="toggle = !toggle" 
+        ng-class="toggle ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'">
+      </span>
+      <div class="details_wrapper" ng-show="toggle">
+        <blockquote class="item_details">
+          {{getItem(key).details}}
+        </blockquote>
+        <span class="item_delete glyphicon glyphicon-trash" ng-click="remove(key)">
+        </span>
+      </div>
+    </div>
+  </div> <!-- End items loop -->
+  <div class="buttons_footer">
+    <button type="button" class="btn btn-primary" ng-click="addNew()">
+       Add New Item
+    </button>
+  </div>
+</div>

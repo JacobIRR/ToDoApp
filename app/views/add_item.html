@@ -1,0 +1,34 @@
+<div class="add_item_form">
+  <form id="newItemForm" name="item_form">
+    <div class="form_field">
+      <label for="title">Title:</label>
+      <input type="text" ng-model="item.title" name="title" size="50" required/>
+    </div>
+    <div ng-show="item_form.$submitted">
+      <div class="warning" ng-show="item_form.title.$error.required">A Title is required.</div>
+    </div>
+    <div class="form_field">
+      <label for="due_date">Due Date:</label>
+      <datepicker date-format="fullDate">
+        <input ng-model="item.due_date" type="text" name="due_date_picker" size="50" required/>
+      </datepicker>
+      <div class="warning" ng-show="date_error">{{date_error}}</div>
+    </div>
+    <div ng-show="item_form.$submitted">
+      <div class="warning" ng-show="item_form.due_date.$error.required">A Due Date is required.</div>
+    </div>
+    <div class="form_field">
+      <label for="details">Details:</label>
+      <textarea form="newItemForm" ng-model="item.details" rows="5" cols="50">
+      </textarea>
+    </div>
+  </form>
+  <div class="buttons_footer">
+    <input type="submit" class="btn btn-success" ng-click="addItem(item)" 
+      value="Save" ng-disabled="item_form.$invalid">
+    <button type="button" class="btn" ng-click="cancelAddItem()">
+       Cancel
+    </button>
+    <div class="warning" ng-show="success">{{success}}</div>
+  </div>
+</div>
